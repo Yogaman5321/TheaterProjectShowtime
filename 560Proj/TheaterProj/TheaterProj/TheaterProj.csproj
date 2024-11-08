@@ -43,11 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ContentRating.cs" />
+    <Compile Include="Models\CrewMember.cs" />
+    <Compile Include="Models\GenreType.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Performer.cs" />
+    <Compile Include="Models\PersonType.cs" />
+    <Compile Include="Models\Screen.cs" />
+    <Compile Include="Models\ScreenType.cs" />
+    <Compile Include="Models\ShowTime.cs" />
+    <Compile Include="Models\Theater.cs" />
+    <Compile Include="Models\TheaterChain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\CreateDatabse.sql" />
+    <Content Include="Scripts\DropDatabase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

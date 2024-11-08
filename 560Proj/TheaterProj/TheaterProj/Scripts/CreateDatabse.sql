@@ -4,22 +4,18 @@ IF EXISTS
    (
       SELECT *
       FROM sys.databases d
-      WHERE d.name = N'$(DatabaseName)'
+      WHERE d.name = N'ProjDatabase'
    )
 BEGIN
-   DECLARE @Msg varchar(256) = 'Database [$(DatabaseName)] already exists.';
+   DECLARE @Msg varchar(256) = 'Database ProjDatabase already exists.';
    PRINT @Msg;
    RETURN;
 END;
 
 -- The file has to be provided to work around a known bug
 -- with SqlLocalDB 2017.
-CREATE DATABASE [$(DatabaseName)]
-ON PRIMARY 
-(
-   NAME = N'PrimaryData',
-   FILENAME = N'$(USERPROFILE)\$(DatabaseName).mdf'
-)
+CREATE DATABASE ProjDatabase
+
 COLLATE SQL_Latin1_General_CP1_CI_AS;
 
 ALTER DATABASE [$(DatabaseName)]
