@@ -43,15 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ContentRating.cs" />
+    <Compile Include="Enums\ContentRating.cs" />
     <Compile Include="Models\CrewMember.cs" />
-    <Compile Include="Models\GenreType.cs" />
+    <Compile Include="Enums\GenreType.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Performer.cs" />
-    <Compile Include="Models\PersonType.cs" />
+    <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Models\Screen.cs" />
-    <Compile Include="Models\ScreenType.cs" />
+    <Compile Include="Enums\ScreenType.cs" />
     <Compile Include="Models\ShowTime.cs" />
     <Compile Include="Models\Theater.cs" />
     <Compile Include="Models\TheaterChain.cs" />
@@ -59,9 +59,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Tables\Movies.CrewMember.sql" />
+    <Content Include="Tables\Movies.Movie.sql" />
+    <Content Include="Tables\Movies.Performer.sql" />
+    <Content Include="Tables\Theaters.Screen.sql" />
+    <Content Include="Tables\Theaters.ShowTime.sql" />
+    <Content Include="Tables\Theaters.TheaterChain.sql" />
     <None Include="App.config" />
+    <Content Include="Tables\Theaters.Location.sql" />
+    <Content Include="Tables\Theaters.Theater.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Schema\Movies.sql" />
+    <Content Include="Schema\Theaters.sql" />
     <Content Include="Scripts\CreateDatabse.sql" />
     <Content Include="Scripts\DropDatabase.sql" />
   </ItemGroup>

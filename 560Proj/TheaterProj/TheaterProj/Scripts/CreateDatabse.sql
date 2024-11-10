@@ -1,4 +1,4 @@
-USE [hunter421];
+
 
 IF EXISTS
    (
@@ -18,7 +18,7 @@ CREATE DATABASE ProjDatabase
 
 COLLATE SQL_Latin1_General_CP1_CI_AS;
 
-ALTER DATABASE [$(DatabaseName)]
+ALTER DATABASE ProjDatabase
 SET
    ANSI_NULLS ON,
    ANSI_PADDING ON,
