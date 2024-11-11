@@ -21,8 +21,4 @@ namespace TheaterData.Models
             AverageUserScore = averageUserScore;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> hunter

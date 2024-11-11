@@ -23,8 +23,4 @@ namespace TheaterData.Models
             LastName = lastName;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> hunter

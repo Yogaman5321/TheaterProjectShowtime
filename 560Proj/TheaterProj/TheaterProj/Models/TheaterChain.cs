@@ -6,11 +6,7 @@ namespace TheaterData.Models
     {
         public int TheaterChainID { get; }
         public string TheaterChainName { get; }
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> hunter
         public TheaterChain(int theaterChainID, string theaterChainName)
         {
             TheaterChainID = theaterChainID;

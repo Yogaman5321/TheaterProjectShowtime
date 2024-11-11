@@ -17,8 +17,4 @@ namespace TheaterData.Models
             City = city;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> hunter
