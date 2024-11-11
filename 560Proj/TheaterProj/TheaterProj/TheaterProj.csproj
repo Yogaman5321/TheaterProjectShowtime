@@ -59,21 +59,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tables\Movies.CrewMember.sql" />
-    <Content Include="Tables\Movies.Movie.sql" />
-    <Content Include="Tables\Movies.Performer.sql" />
-    <Content Include="Tables\Theaters.Screen.sql" />
-    <Content Include="Tables\Theaters.ShowTime.sql" />
-    <Content Include="Tables\Theaters.TheaterChain.sql" />
+    <Content Include="SQL\Tables\Movies.CrewMember.sql" />
+    <Content Include="SQL\Tables\Movies.Movie.sql" />
+    <Content Include="SQL\Tables\Movies.Performer.sql" />
+    <Content Include="SQL\Tables\Theaters.Screen.sql" />
+    <Content Include="SQL\Tables\Theaters.ShowTime.sql" />
+    <Content Include="SQL\Tables\Theaters.TheaterChain.sql" />
     <None Include="App.config" />
-    <Content Include="Tables\Theaters.Location.sql" />
-    <Content Include="Tables\Theaters.Theater.sql" />
+    <Content Include="SQL\Tables\Theaters.Location.sql" />
+    <Content Include="SQL\Tables\Theaters.Theater.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Schema\Movies.sql" />
-    <Content Include="Schema\Theaters.sql" />
-    <Content Include="Scripts\CreateDatabse.sql" />
-    <Content Include="Scripts\DropDatabase.sql" />
+    <Content Include="SQL\Schema\Movies.sql" />
+    <Content Include="SQL\Schema\Theaters.sql" />
+    <Content Include="SQL\Scripts\CreateDatabse.sql" />
+    <Content Include="SQL\Scripts\DropDatabase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
