@@ -47,7 +47,7 @@ namespace TheaterProj.TheaterApp
                 MainMenuDisplay.Visibility = Visibility.Hidden;
                 ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
             }
-            if (display == ShowtimeSchedulerDisplay)
+            else if (display == ShowtimeSchedulerDisplay)
             {
                 // show this one
                 ShowtimeSchedulerDisplay.Visibility = Visibility.Visible;
