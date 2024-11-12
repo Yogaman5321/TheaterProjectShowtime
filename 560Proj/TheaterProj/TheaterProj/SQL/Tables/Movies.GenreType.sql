@@ -1,0 +1,9 @@
+﻿IF OBJECT_ID(N'Movies.GenreType') IS NULL
+BEGIN
+	CREATE TABLE Movies.GenreType
+	(
+		GenreTypeID TINYINT NOT NULL PRIMARY KEY,
+		GenreType NVARCHAR(14) NOT NULL UNIQUE	
+	);
+END;
+

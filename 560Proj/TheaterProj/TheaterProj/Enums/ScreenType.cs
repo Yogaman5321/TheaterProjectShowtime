@@ -4,7 +4,7 @@ namespace TheaterData.Models
 {
     public enum ScreenType
     {
-        IMAX,
-        Dolby
+        IMAX = 1,
+        Dolby = 2
     }
 }

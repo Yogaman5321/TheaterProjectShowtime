@@ -8,9 +8,9 @@ namespace TheaterData.Models
 {
     public enum PersonType
     {
-        Actor,
-        Actress,
-        Director,
-        Writer
+        Actor = 1,
+        Actress = 2,
+        Director = 3,
+        Writer = 4
     }
 }

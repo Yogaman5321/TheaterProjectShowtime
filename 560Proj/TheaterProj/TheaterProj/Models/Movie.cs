@@ -11,7 +11,9 @@ namespace TheaterData.Models
         public int Runtime { get; }
         public decimal AverageUserScore { get; }
 
-        public Movie(int movieID, GenreType genreType, string movieName, int releaseYear, int runtime, decimal averageUserScore)
+        public ContentRating ContentRating { get; }
+
+        public Movie(int movieID, GenreType genreType, string movieName, int releaseYear, int runtime, decimal averageUserScore, ContentRating contentRating)
         {
             MovieID = movieID;
             GenreType = genreType;
@@ -19,6 +21,7 @@ namespace TheaterData.Models
             ReleaseYear = releaseYear;
             Runtime = runtime;
             AverageUserScore = averageUserScore;
+            ContentRating = contentRating;
         }
     }
 }
