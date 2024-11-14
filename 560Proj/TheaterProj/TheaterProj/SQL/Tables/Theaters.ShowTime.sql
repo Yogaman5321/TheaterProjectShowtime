@@ -6,7 +6,7 @@ CREATE TABLE [Theaters].[ShowTime]
     MovieID INT NOT NULL,
 	[DateTime] DATE NOT NULL,
 
-	PRIMARY KEY(ScreenID, MovieID),
+	PRIMARY KEY(ScreenID, [DateTime]),
 	FOREIGN KEY(ScreenID) REFERENCES Theaters.Screen(ScreenID),
 	FOREIGN KEY(MovieID) REFERENCES Movies.Movie(MovieID)
 )

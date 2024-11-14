@@ -1,6 +1,4 @@
 ﻿
---THIS IS NOT FINISHED YET!!!!!!!!!
-
 DECLARE @PersonTypeStaging TABLE
 (
 	PersonTypeID TINYINT NOT NULL PRIMARY KEY,
@@ -16,11 +14,11 @@ VALUES
 	(4, 'Writer');
 	
 
-MERGE tempDB.Movies.Movie M
-USING @ContentRatingStaging S ON S.ContentRatingID = M.ContentRatingID
-WHEN MATCHED AND S.ContentRating <> M.ContentRating THEN
+MERGE Movies.Movie M
+USING @PersonTypeStaging S ON S.PersonTypeID = M.PersonTypeID
+WHEN MATCHED AND S.PersonType <> M.PersonType THEN
 	UPDATE
-	SET ContentRating = S.ContentRating
+	SET PersonType = S.PersonType
 WHEN NOT MATCHED THEN
-	INSERT(ContentRatingID, ContentRating)
-	VALUES(S.ContentRatingID, S.ContentRating);
+	INSERT(PersonTypeID, PersonType)
+	VALUES(S.PersonTypeID, S.PersonType);

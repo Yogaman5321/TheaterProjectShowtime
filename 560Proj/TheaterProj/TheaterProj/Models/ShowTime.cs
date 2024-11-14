@@ -6,9 +6,9 @@ namespace TheaterData.Models
     {
         public int ScreenID { get; }
         public int MovieID { get; }
-        public string DateTime { get; }
+        public DateTime DateTime { get; }
 
-        public Showtime(int screenID, int movieID, string dateTime)
+        public Showtime(int screenID, int movieID, DateTime dateTime)
         {
             ScreenID = screenID;
             MovieID = movieID;
