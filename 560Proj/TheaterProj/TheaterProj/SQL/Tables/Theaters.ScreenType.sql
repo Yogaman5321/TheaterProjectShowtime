@@ -1,4 +1,5 @@
-﻿IF OBJECT_ID(N'Theaters.ScreenType') IS NULL
+﻿
+IF OBJECT_ID(N'Theaters.ScreenType') IS NULL
 BEGIN
 	CREATE TABLE Theaters.ScreenType
 	(

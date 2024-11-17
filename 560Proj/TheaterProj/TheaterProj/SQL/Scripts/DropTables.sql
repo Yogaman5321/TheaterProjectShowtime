@@ -1,24 +1,13 @@
-﻿DROP TABLE Movies.CrewMember;
-go
-DROP TABLE Movies.Performer;
-go
-DROP TABLE Movies.ContentRating;
-go
-DROP TABLE Movies.GenreType;
-go
-DROP TABLE Movies.Movie;
-go
+﻿CREATE OR ALTER PROCEDURE DropTables AS
 
-
-DROP TABLE Theaters.Screen;
-go
-DROP TABLE Theaters.ScreenType;
-go
-DROP TABLE Theaters.[Location];
-go
-DROP TABLE Theaters.ShowTime;
-go
-DROP TABLE Theaters.Theater;
-go
-DROP TABLE Theaters.TheaterChain;
-go
+DROP TABLE Theaters.ShowTime
+DROP TABLE Movies.CrewMember
+DROP TABLE Movies.Movie
+DROP TABLE Movies.PersonType
+DROP TABLE Movies.ContentRating
+DROP TABLE Movies.GenreType
+DROP TABLE Theaters.Screen
+DROP TABLE Theaters.ScreenType
+DROP TABLE Theaters.Theater
+DROP TABLE Theaters.TheaterChain
+DROP TABLE Theaters.[Location]

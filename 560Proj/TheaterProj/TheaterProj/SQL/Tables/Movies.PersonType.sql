@@ -1,4 +1,5 @@
-﻿IF OBJECT_ID(N'Movies.PersonType') IS NULL
+﻿
+IF OBJECT_ID(N'Movies.PersonType') IS NULL
 BEGIN
 	CREATE TABLE Movies.PersonType
 	(

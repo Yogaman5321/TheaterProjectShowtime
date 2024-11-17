@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using TheaterData.Models;
 
 namespace TheaterProj.Repos
@@ -25,7 +26,33 @@ namespace TheaterProj.Repos
 
         public void AddShowTime(int screenID, DateTime date, int movieID)
         {
-            throw new NotImplementedException();
+            // Verify parameters.
+            //Will Do Later
+
+            // Save to database.
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    using (var command = new SqlCommand("Theaters.AddShowTime", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("ScreenID", screenID);
+                        command.Parameters.AddWithValue("DateTime", date); // If something goes wrong, look here.
+                        command.Parameters.AddWithValue("MovieID", movieID);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                        var personId = (int)command.Parameters["PersonId"].Value;
+
+                    }
+                }
+            }
         }
 
         public IList<Showtime> GetAllShowTimes()

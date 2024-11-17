@@ -1,4 +1,5 @@
-﻿IF OBJECT_ID(N'Movies.Movie') IS NULL
+﻿
+IF OBJECT_ID(N'Movies.Movie') IS NULL
 BEGIN
 CREATE TABLE [Movies].[Movie]
 (
