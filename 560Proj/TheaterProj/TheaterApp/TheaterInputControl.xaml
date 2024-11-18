@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="TheaterProj.TheaterApp.TheaterInputControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterProj.TheaterApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="630" d:DesignWidth="1080">
+    <Grid>
+        <StackPanel Margin="200,100,300,100">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock FontSize="12" Margin="60,10,15,10">Enter theater number:</TextBlock>
+                <TextBox Width="40" FontSize="12" Margin="0,10,15,10">
+                    <!-- placeholder
+                        <TextBox.Text>
+                            <Binding StringFormat="C" Path="Paid" Delay="500" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <ExceptionValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        -->
+                </TextBox>
+                <!--Error message texblock, for example: Text="{Binding ErrorMessage}"}-->
+                <TextBlock Foreground="Red" FontSize="12" Margin="0,10,15,10"/>
+                <!--for example: IsEnabled="{Binding IsValid}" -->
+                <Button Margin="0,10,15,10" Click="SearchButtonClickEventHandler">SEARCH</Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
