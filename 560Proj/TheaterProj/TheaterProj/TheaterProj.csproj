@@ -102,6 +102,7 @@
     <Content Include="SQL\Procedures\Theaters.GetAllLocations.sql" />
     <Content Include="SQL\Procedures\Theaters.GetAllShowTimes.sql" />
     <Content Include="SQL\Procedures\Theaters.AddShowTime.sql" />
+    <None Include="PS\BuildDatabase.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SQL\Schema\Movies.sql" />

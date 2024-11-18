@@ -14,7 +14,7 @@ VALUES
 	(4, 'Writer');
 	
 
-MERGE Movies.Movie M
+MERGE Movies.PersonType M
 USING @PersonTypeStaging S ON S.PersonTypeID = M.PersonTypeID
 WHEN MATCHED AND S.PersonType <> M.PersonType THEN
 	UPDATE
