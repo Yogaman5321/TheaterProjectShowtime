@@ -6,7 +6,7 @@ namespace TheaterData.Models
     {
         public int TheaterChainID { get; }
         public string TheaterChainName { get; }
-        
+
         public TheaterChain(int theaterChainID, string theaterChainName)
         {
             TheaterChainID = theaterChainID;
