@@ -15,12 +15,13 @@
         <StackPanel Background="SlateGray" Grid.Row="0" Orientation="Horizontal">
             <Button Click="HomeButtonClickEventHandler" FontSize="24" Padding="5,0,5,0" Margin="5,10">Home</Button>
             <Button Click="SchedulerButtonClickEventHandler" FontSize="24" Padding="5,0,5,0" Margin="5,10">Scheduler</Button>
-            <Button FontSize="24" Padding="5,0,5,0" Margin="5,10">Movies</Button>
+            <Button Click="QueriesButtonClickEventHandler" FontSize="24" Padding="5,0,5,0" Margin="5,10">Queries</Button>
         </StackPanel>
 
         <local:MainMenuControl x:Name="MainMenuDisplay" Grid.Row="1" Visibility="Visible"/>
         <local:TheaterInputControl x:Name="TheaterInputDisplay" Grid.Row="1" Visibility="Hidden"/>
         <local:ShowtimeSchedulerControl x:Name="ShowtimeSchedulerDisplay" Grid.Row="1" Visibility="Hidden"/>
+        <local:AggregatingQueriesControl x:Name="AggregatingQueriesDisplay" Grid.Row="1" Visibility="Hidden"/>
 
     </Grid>
 </Window>

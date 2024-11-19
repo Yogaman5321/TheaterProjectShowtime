@@ -10,9 +10,7 @@
         <!--Placeholder Main Menu-->
         <StackPanel>
             <TextBlock Margin="200,40,200,10" FontSize="72" HorizontalAlignment="Center">Welcome</TextBlock>
-            <TextBlock Margin="200,40,200,10" FontSize="24" HorizontalAlignment="Center" TextWrapping="Wrap">Click Scheduler to view and customize your theater's showtimes and click Movies to view movie specific information.</TextBlock>
-            <Button FontSize="18" Height="70" Width="280" Margin="0,40,0,10" Padding="20">Scheduler</Button>
-            <Button FontSize="18" Height="70" Width="280" Margin="0,40,0,10" Padding="20">Movies</Button>
+            <TextBlock Margin="200,40,200,10" FontSize="24" HorizontalAlignment="Center" TextWrapping="Wrap">Click Scheduler to view and customize your theater's showtimes and click Queries to view specific information.</TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

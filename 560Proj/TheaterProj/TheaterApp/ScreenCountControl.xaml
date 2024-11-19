@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="TheaterProj.TheaterApp.ScreenCountControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterProj.TheaterApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="560" d:DesignWidth="1080">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock FontSize="18">Parameters</TextBlock>
+        
+        <ListView Grid.Column="1" ItemsSource="{Binding}">
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Screen Count Query">
+
+                    <!-- add the property DisplayMemberBinding="{Binding Path=TheaterName}" to bind -->
+                    <GridViewColumn   Header="Theater" Width="300"/>
+
+                    <!-- ex. DisplayMemberBinding="{Binding Path=NumberOfScreensAvailable}" -->
+                    <GridViewColumn Header="Number of Screens" Width="200"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

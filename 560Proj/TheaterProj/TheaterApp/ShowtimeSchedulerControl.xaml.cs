@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheaterData.Models;
+using TheaterProj.TheaterApp.EventArgs;
 
 namespace TheaterProj.TheaterApp
 {
@@ -20,9 +22,51 @@ namespace TheaterProj.TheaterApp
     /// </summary>
     public partial class ShowtimeSchedulerControl : UserControl
     {
+        public event EventHandler<RemoveShowtimeEventArgs>? RemoveShowtime;
+
         public ShowtimeSchedulerControl()
         {
             InitializeComponent();
+        }
+        
+        /// <summary>
+        /// Removes a Showtime from the database
+        /// </summary>
+        public void RemoveShowtimeClickEventHandler(object? sender, RoutedEventArgs e)
+        {
+            //RemoveShowtime?.Invoke(this, new RemoveShowtimeEventArgs(showtime to remove) );
+        }
+
+        // we might not include this function
+        public void EditShowtimeClickEventHandler(object? sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Stages a DateTime to be the DateTime for a new Showtime
+        /// </summary>
+        public void AddDateClickEventHandler(object? sender, RoutedEventArgs e)
+        {
+            // update corresponding TextBlock at bottom
+            // send info to Add Showtime button
+        }
+
+        /// <summary>
+        /// Stages a Movie to be the Movie for a new Showtime (DOUBLE CLICK LISTVIEW ITEM TO ADD)
+        /// </summary>
+        public void AddMovieClickEventHandler(object? sender, MouseButtonEventArgs e)
+        {
+            // update corresponding TextBlock at bottom
+            // send info to Add Showtime button
+        }
+
+        /// <summary>
+        /// Adds the Showtime given the information selected (displayed at the bottom)
+        /// </summary>
+        public void AddShowtimeClickEventHandler(object? sender, RoutedEventArgs e)
+        {
+            // maybe make AddShowtimeViewModel as DataContext of the AddShowtimeButton that collects the info from the other buttons
         }
     }
 }

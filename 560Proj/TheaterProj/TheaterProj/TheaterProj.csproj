@@ -52,7 +52,7 @@
     <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Models\Screen.cs" />
     <Compile Include="Enums\ScreenType.cs" />
-    <Compile Include="Models\ShowTime.cs" />
+    <Compile Include="Models\Showtime.cs" />
     <Compile Include="Models\Theater.cs" />
     <Compile Include="Models\TheaterChain.cs" />
     <Compile Include="Program.cs" />

@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheaterProj.TheaterApp.EventArgs;
 
 namespace TheaterProj.TheaterApp
 {
@@ -19,6 +20,8 @@ namespace TheaterProj.TheaterApp
         public MainWindow()
         {
             InitializeComponent();
+
+            TheaterInputDisplay.TheaterSubmitted += TheaterInputEventHandler;
         }
 
         public void SchedulerButtonClickEventHandler(object? sender, RoutedEventArgs e)
@@ -31,6 +34,16 @@ namespace TheaterProj.TheaterApp
             SetDisplay(MainMenuDisplay);
         }
 
+        public void QueriesButtonClickEventHandler(object? sender, RoutedEventArgs e)
+        {
+            SetDisplay(AggregatingQueriesDisplay);
+        }
+
+        public void TheaterInputEventHandler(object? sender, TheaterEventArgs e)
+        {
+            // set ShowtimeSchedulerDisplay.DataContext to the input theater
+            SetDisplay(ShowtimeSchedulerDisplay);
+        }
 
         /// <summary>
         /// Helper method for switching between controls in the MainWindow grid, row 1
@@ -46,6 +59,7 @@ namespace TheaterProj.TheaterApp
                 // hide all others
                 MainMenuDisplay.Visibility = Visibility.Hidden;
                 ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
+                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
             }
             else if (display == ShowtimeSchedulerDisplay)
             {
@@ -55,6 +69,17 @@ namespace TheaterProj.TheaterApp
                 // hide all others
                 MainMenuDisplay.Visibility = Visibility.Hidden;
                 TheaterInputDisplay.Visibility = Visibility.Hidden;
+                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
+            }
+            else if (display == AggregatingQueriesDisplay)
+            {
+                // show this one
+                AggregatingQueriesDisplay.Visibility = Visibility.Visible;
+
+                // hide all others
+                MainMenuDisplay.Visibility = Visibility.Hidden;
+                TheaterInputDisplay.Visibility = Visibility.Hidden;
+                ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -64,6 +89,7 @@ namespace TheaterProj.TheaterApp
                 // hide all others
                 TheaterInputDisplay.Visibility = Visibility.Hidden;
                 ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
+                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
             }
         }
 

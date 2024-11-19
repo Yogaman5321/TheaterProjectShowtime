@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TheaterProj.TheaterApp"
+             xmlns:local="clr-namespace:TheaterProj.TheaterApp" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="630" d:DesignWidth="1080">
     <Grid>
@@ -11,5 +11,87 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="18" FontWeight="Heavy" Margin="10">Showtimes</TextBlock>
+            <DockPanel Grid.Row="1" Margin="0,0,20,0">
+                <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <!--
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} showing at {1:MM/dd/yy H:mm}">
+                                            <Binding Path="MovieName"/>
+                                            <Binding Path="DateTime"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                -->
+                                <DockPanel>
+                                    <Button DockPanel.Dock="Right" Background="OrangeRed" HorizontalAlignment="Right" Click="RemoveShowtimeClickEventHandler">Remove</Button>
+                                    <Button DockPanel.Dock="Left" Background="ForestGreen" HorizontalAlignment="Right" Click="EditShowtimeClickEventHandler">Edit</Button>
+                                </DockPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </DockPanel>
+        </Grid>
+
+        <DockPanel Grid.Column="0" Grid.Row="0" Margin="20,10,20,0">
+            
+            <TextBlock DockPanel.Dock="Top" FontSize="18" FontWeight="Heavy">Add Showtime</TextBlock>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Margin="10">Enter date:</TextBlock>
+                <xctk:DateTimePicker Width="280" Height="20" HorizontalAlignment="Left" Format="Custom" FormatString="yyyy'-'MM'-'dd' 'HH':'mm"/>
+                <Button Click="AddDateClickEventHandler" Margin="10" Padding="3,0,3,0" Height="20">Add Date</Button>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Margin="10">Enter movie:</TextBlock>
+            </StackPanel>
+
+            <ListView DockPanel.Dock="Bottom" MouseDoubleClick="AddMovieClickEventHandler" ItemsSource="{Binding}">
+                <ListView.View>
+
+                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Movies">
+
+                        <!-- add the property DisplayMemberBinding="{Binding Path=MovieName}" to bind -->
+                        <GridViewColumn   Header="Title" Width="400"/>
+
+                        <!-- ex. DisplayMemberBinding="{Binding Path=ReleaseYear}" -->
+                        <GridViewColumn Header="Release Year" Width="90"/>
+
+                        <!-- ex. DisplayMemberBinding="{Binding Path=Runtime}" -->
+                        <GridViewColumn Header="Runtime" Width="90"/>
+
+                        <!-- ex. DisplayMemberBinding="{Binding Path=AverageUserScore}" -->
+                        <GridViewColumn Header="IMDB Rating" Width="80"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+
+        <StackPanel Margin="20" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Margin="10" VerticalAlignment="Center" FontSize="14">Date:</TextBlock>
+            <TextBlock Margin="10" VerticalAlignment="Center" FontSize="14">Movie:</TextBlock>
+            <Button x:Name="AddShowtimeButton" Click="AddShowtimeClickEventHandler" Margin="10" Padding="10,0,10,0" VerticalAlignment="Center">Add Showtime</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

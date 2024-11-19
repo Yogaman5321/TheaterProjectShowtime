@@ -24,7 +24,7 @@
                 <!--Error message texblock, for example: Text="{Binding ErrorMessage}"}-->
                 <TextBlock Foreground="Red" FontSize="12" Margin="0,10,15,10"/>
                 <!--for example: IsEnabled="{Binding IsValid}" -->
-                <Button Margin="0,10,15,10" Click="SearchButtonClickEventHandler">SEARCH</Button>
+                <Button Margin="0,10,15,10" Click="SubmitButtonClickEventHandler">Submit</Button>
             </StackPanel>
         </StackPanel>
 

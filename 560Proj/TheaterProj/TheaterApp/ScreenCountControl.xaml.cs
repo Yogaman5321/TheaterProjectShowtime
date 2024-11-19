@@ -12,27 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TheaterData.Models;
-using TheaterProj.TheaterApp.EventArgs;
 
 namespace TheaterProj.TheaterApp
 {
     /// <summary>
-    /// Interaction logic for TheaterInputControl.xaml
+    /// Interaction logic for ScreenCountControl.xaml
     /// </summary>
-    public partial class TheaterInputControl : UserControl
+    public partial class ScreenCountControl : UserControl
     {
-        public event EventHandler<TheaterEventArgs>? TheaterSubmitted;
-
-        public TheaterInputControl()
+        public ScreenCountControl()
         {
             InitializeComponent();
-        }
-
-        public void SubmitButtonClickEventHandler(object? sender, RoutedEventArgs e)
-        {
-            // send info number to update DataContext of
-            TheaterSubmitted?.Invoke(this, new TheaterEventArgs());
         }
     }
 }
