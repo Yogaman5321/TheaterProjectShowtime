@@ -7,3 +7,5 @@
 	BEGIN
 		EXEC(N'CREATE SCHEMA [Movies] AUTHORIZATION [dbo]');
 	END;
+GO
+

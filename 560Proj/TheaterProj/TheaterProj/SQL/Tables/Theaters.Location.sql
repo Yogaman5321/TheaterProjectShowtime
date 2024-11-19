@@ -1,6 +1,7 @@
-﻿IF OBJECT_ID(N'Theaters.Location') IS NULL
+﻿
+IF OBJECT_ID(N'Theaters.Location') IS NULL
 BEGIN
-CREATE TABLE [Theaters].[Location]
+CREATE TABLE Theaters.[Location]
 (
 	[LocationID] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [State] NVARCHAR(13) NOT NULL UNIQUE, 
