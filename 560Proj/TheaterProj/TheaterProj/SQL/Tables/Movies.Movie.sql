@@ -8,10 +8,8 @@ CREATE TABLE [Movies].[Movie]
 	ReleaseYear INT NOT NULL,
 	Runtime INT NOT NULL,
 	AverageUserScore DECIMAL(18,1),
-	GenreTypeID TINYINT,
 	ContentRatingID TINYINT NOT NULL,
 
-	FOREIGN KEY(GenreTypeID) REFERENCES Movies.GenreType(GenreTypeID),
 	FOREIGN KEY(ContentRatingID) REFERENCES Movies.ContentRating(ContentRatingID)
 )
 END;

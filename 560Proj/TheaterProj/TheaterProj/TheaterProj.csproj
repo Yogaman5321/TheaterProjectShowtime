@@ -91,6 +91,8 @@
     <Content Include="SQL\Tables\Movies.CrewMember.sql" />
     <Content Include="SQL\Tables\Movies.GenreType.sql" />
     <Content Include="SQL\Tables\Movies.Movie.sql" />
+    <Content Include="SQL\Tables\Movies.MovieCrew.sql" />
+    <Content Include="SQL\Tables\Movies.MovieGenre.sql" />
     <Content Include="SQL\Tables\Movies.PersonType.sql" />
     <Content Include="SQL\Tables\Theaters.Screen.sql" />
     <Content Include="SQL\Tables\Theaters.ScreenType.sql" />

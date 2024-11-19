@@ -1,0 +1,12 @@
+﻿IF OBJECT_ID(N'Movies.MovieCrew') IS NULL
+BEGIN
+CREATE TABLE Movies.MovieCrew
+(
+	MovieID INT NOT NULL,
+	CrewMemberID INT NOT NULL,
+
+	PRIMARY KEY(MovieID, CrewMemberID),
+	FOREIGN KEY(MovieID) REFERENCES Movies.Movie(MovieID),
+	FOREIGN KEY(CrewMemberID) REFERENCES 
+
+)

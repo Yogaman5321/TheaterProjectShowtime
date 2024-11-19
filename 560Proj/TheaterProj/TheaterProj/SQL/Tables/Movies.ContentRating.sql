@@ -3,6 +3,9 @@ BEGIN
 	CREATE TABLE Movies.ContentRating
 	(
 		ContentRatingID TINYINT NOT NULL PRIMARY KEY,
-		ContentRating NVARCHAR(10) NOT NULL UNIQUE	
+		MovieID INT NOT NULL,
+		ContentRating NVARCHAR(10) NOT NULL UNIQUE,
+
+		FOREIGN KEY(MovieID) REFERENCES Movies.Movie(MovieID)
 	);
 END;
