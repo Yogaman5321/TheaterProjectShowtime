@@ -6,10 +6,11 @@ CREATE TABLE [Theaters].[Theater]
 		TheaterID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 		LocationID INT NOT NULL,
 		TheaterChainID INT NOT NULL,
-		TheaterName NVARCHAR(20),
+		TheaterName NVARCHAR(50),
 
 		FOREIGN KEY(LocationID) REFERENCES Theaters.[Location](LocationID),
 		FOREIGN KEY(TheaterChainID) REFERENCES Theaters.TheaterChain(TheaterChainID)
 	
 	)
 END;
+

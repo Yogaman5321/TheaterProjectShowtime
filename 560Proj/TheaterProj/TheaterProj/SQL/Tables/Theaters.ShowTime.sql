@@ -3,7 +3,7 @@ IF OBJECT_ID(N'Theaters.ShowTime') IS NULL
 BEGIN
 CREATE TABLE [Theaters].[ShowTime]
 (
-	[ScreenID] INT NOT NULL IDENTITY(1,1), 
+	[ScreenID] INT NOT NULL, 
     MovieID INT NOT NULL,
 	[DateTime] DATETIME NOT NULL,
 

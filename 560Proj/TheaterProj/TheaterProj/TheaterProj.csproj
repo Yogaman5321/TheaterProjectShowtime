@@ -45,55 +45,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ContentRating.cs" />
-    <Compile Include="Interfaces\ICrewMemberRepository.cs" />
-    <Compile Include="Interfaces\ILocationRepository.cs" />
-    <Compile Include="Interfaces\IMovieRepository.cs" />
-    <Compile Include="Interfaces\IScreenRepository.cs" />
-    <Compile Include="Interfaces\IShowTimeRepository.cs" />
-    <Compile Include="Interfaces\ITheaterChainRepository.cs" />
-    <Compile Include="Interfaces\ITheaterRepository.cs" />
-    <Compile Include="Models\CrewMember.cs" />
     <Compile Include="Enums\GenreType.cs" />
-    <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Enums\PersonType.cs" />
-    <Compile Include="Models\Screen.cs" />
     <Compile Include="Enums\ScreenType.cs" />
-    <Compile Include="Models\Showtime.cs" />
-    <Compile Include="Models\Theater.cs" />
-    <Compile Include="Models\TheaterChain.cs" />
+    <Compile Include="Models\FullTheater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repos\LocationRepository.cs" />
-    <Compile Include="Repos\CrewMemberRepository.cs" />
-    <Compile Include="Repos\MovieRepository.cs" />
-    <Compile Include="Repos\ScreenRepository.cs" />
-    <Compile Include="Repos\ShowTimeRepository.cs" />
-    <Compile Include="Repos\TheaterChainRepository.cs" />
-    <Compile Include="Repos\TheaterRepository.cs" />
+    <Compile Include="QueryHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SQL\Data\Movies.ContentRating.sql" />
+    <Content Include="SQL\Data\FillScreens.sql" />
+    <Content Include="SQL\Data\FillShowTimes.sql" />
+    <Content Include="SQL\Data\FillTheaters.sql" />
     <Content Include="SQL\Data\Movies.GenreType.sql" />
-    <Content Include="SQL\Data\Movies.PersonType.sql" />
     <Content Include="SQL\Data\Theaters.ScreenType.sql" />
-    <Content Include="SQL\Procedures\Movies.GetAllCrewMembers.sql" />
-    <Content Include="SQL\Procedures\Movies.GetAllMovies.sql" />
-    <Content Include="SQL\Procedures\Theaters.GetAllScreens.sql" />
-    <Content Include="SQL\Procedures\Theaters.GetAllTheaterChains.sql" />
-    <Content Include="SQL\Procedures\Theaters.GetAllTheaters.sql" />
+    <Content Include="SQL\Data\FillCrewMembers.sql" />
+    <Content Include="SQL\Data\FillLocations.sql" />
+    <Content Include="SQL\Data\FillMovieCrew.sql" />
+    <Content Include="SQL\Data\FillMovieGenre.sql" />
+    <Content Include="SQL\Data\FillMovies.sql" />
+    <Content Include="SQL\Data\FillRatings.sql" />
+    <Content Include="SQL\Data\FillTheaterChain.sql" />
+    <Content Include="SQL\Procedures\RetrieveFullTheater.sql" />
     <Content Include="SQL\Scripts\GetConnectionString.sql" />
-    <Content Include="SQL\Procedures\Movies.GetMoviesByGenre.sql" />
-    <Content Include="SQL\Procedures\Movies.GetMoviesByName.sql" />
-    <Content Include="SQL\Procedures\Movies.GetMoviesByRating.sql" />
     <Content Include="SQL\Scripts\DropTables.sql" />
+    <Content Include="SQL\Scripts\InvokeDrop.sql" />
     <Content Include="SQL\Tables\Movies.ContentRating.sql" />
     <Content Include="SQL\Tables\Movies.CrewMember.sql" />
     <Content Include="SQL\Tables\Movies.GenreType.sql" />
     <Content Include="SQL\Tables\Movies.Movie.sql" />
     <Content Include="SQL\Tables\Movies.MovieCrew.sql" />
     <Content Include="SQL\Tables\Movies.MovieGenre.sql" />
-    <Content Include="SQL\Tables\Movies.PersonType.sql" />
     <Content Include="SQL\Tables\Theaters.Screen.sql" />
     <Content Include="SQL\Tables\Theaters.ScreenType.sql" />
     <Content Include="SQL\Tables\Theaters.ShowTime.sql" />
@@ -101,8 +82,6 @@
     <None Include="App.config" />
     <Content Include="SQL\Tables\Theaters.Location.sql" />
     <Content Include="SQL\Tables\Theaters.Theater.sql" />
-    <Content Include="SQL\Procedures\Theaters.GetAllLocations.sql" />
-    <Content Include="SQL\Procedures\Theaters.GetAllShowTimes.sql" />
     <Content Include="SQL\Procedures\Theaters.AddShowTime.sql" />
     <None Include="PS\BuildDatabase.ps1" />
   </ItemGroup>
@@ -115,8 +94,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SQL\FillTables\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

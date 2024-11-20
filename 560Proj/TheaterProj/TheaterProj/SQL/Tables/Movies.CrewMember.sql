@@ -3,10 +3,13 @@ BEGIN
 CREATE TABLE [Movies].[CrewMember]
 (
 	[CrewMemberID] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
-	PersonTypeID TINYINT NOT NULL,
-	FirstName NVARCHAR(15) NOT NULL,
-	LastName NVARCHAR(15) NOT NULL,
+	PersonType NVARCHAR(15) NOT NULL,
+	FirstName NVARCHAR(30) NOT NULL,
+	LastName NVARCHAR(30) NOT NULL,
 
-	FOREIGN KEY(PersonTypeID) REFERENCES Movies.PersonType(PersonTypeID)
+	UNIQUE(CrewMemberID, FirstName, LastName),
+	FOREIGN KEY (CrewMemberID) REFERENCES Movies.MovieCrew(CrewMemberID)
+
 )
 END;
+

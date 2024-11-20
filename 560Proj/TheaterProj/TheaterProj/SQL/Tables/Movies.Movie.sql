@@ -7,9 +7,8 @@ CREATE TABLE [Movies].[Movie]
 	MovieName NVARCHAR(50) NOT NULL UNIQUE,
 	ReleaseYear INT NOT NULL,
 	Runtime INT NOT NULL,
-	AverageUserScore DECIMAL(18,1),
-	ContentRatingID TINYINT NOT NULL,
+	AverageUserScore DECIMAL(18,1),	
 
-	FOREIGN KEY(ContentRatingID) REFERENCES Movies.ContentRating(ContentRatingID)
 )
 END;
+

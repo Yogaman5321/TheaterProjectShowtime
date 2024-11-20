@@ -5,6 +5,6 @@ BEGIN
 	(
 		GenreTypeID TINYINT NOT NULL PRIMARY KEY,
 		GenreType NVARCHAR(14) NOT NULL UNIQUE	
-	);
+	)
 END;
 

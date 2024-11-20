@@ -7,23 +7,28 @@
 
 INSERT @GenreTypeStaging(GenreTypeID, GenreType)
 VALUES
-	(1, 'Action'),
-	(2, 'Adventure'),
-	(3, 'Animation'),
-	(4, 'Biography'),
-	(5, 'Comedy'),
-	(6, 'Crime'),
-	(7, 'Drama'),
-	(8, 'Fantasy'),
-	(9, 'Family'),
-	(10, 'FilmNoir'),
-	(11, 'Horror'),
-	(12, 'Musical'),
-	(13, 'Mystery'),
-	(14, 'Romance'),
-	(15, 'SciFi'),
-	(16, 'Thriller'),
-	(17, 'War');
+	(1, 'Drama'),
+	(2, 'Crime'),
+	(3, 'Action'),
+	(4, 'Adventure'),
+	(5, 'Biography'),
+	(6, 'History'),
+	(7, 'Thriller'),
+	(8, 'Mystery'),
+	(9, 'Romance'),
+	(10, 'DocuDrama'),
+	(11, 'Western'),
+	(12, 'Fantasy'),
+	(13, 'Superhero'),
+	(14, 'War'),
+	(15, 'Horror'),
+	(16, 'Music'),
+	(17, 'SciFi'),
+	(18, 'Comedy'),
+	(19, 'Animation'),
+	(20, 'Family'),
+	(21, 'FilmNoir'),
+	(22, 'Tragedy');
 
 MERGE Movies.GenreType GT
 USING @GenreTypeStaging S ON S.GenreTypeID = GT.GenreTypeID

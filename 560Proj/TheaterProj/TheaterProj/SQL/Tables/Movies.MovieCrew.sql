@@ -2,11 +2,12 @@
 BEGIN
 CREATE TABLE Movies.MovieCrew
 (
-	MovieID INT NOT NULL,
 	CrewMemberID INT NOT NULL,
+	MovieID INT NOT NULL,
+	
 
-	PRIMARY KEY(MovieID, CrewMemberID),
+	PRIMARY KEY(CrewMemberID),
 	FOREIGN KEY(MovieID) REFERENCES Movies.Movie(MovieID),
-	FOREIGN KEY(CrewMemberID) REFERENCES 
 
 )
+END;

@@ -5,5 +5,5 @@ BEGIN
 	(
 		ScreenTypeID TINYINT NOT NULL PRIMARY KEY,
 		ScreenType NVARCHAR(10) NOT NULL UNIQUE	
-	);
+	)
 END;

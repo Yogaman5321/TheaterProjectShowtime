@@ -8,8 +8,10 @@ CREATE TABLE [Theaters].[Screen]
 	TheaterID INT NOT NULL,
 	ScreenNumber INT NOT NULL, 
 
-	FOREIGN KEY(ScreenTypeID) REFERENCES Theaters.ScreenType(ScreenTypeID),
-	FOREIGN KEY(TheaterID) REFERENCES Theaters.Theater(TheaterID)
+	FOREIGN KEY(TheaterID) REFERENCES Theaters.Theater(TheaterID),
+	FOREIGN KEY(ScreenTypeID) REFERENCES Theaters.ScreenType(ScreenTypeID)	
     
 )
 END;
+
+

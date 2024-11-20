@@ -1,9 +1,0 @@
-﻿
-IF OBJECT_ID(N'Movies.PersonType') IS NULL
-BEGIN
-	CREATE TABLE Movies.PersonType
-	(
-		PersonTypeID TINYINT NOT NULL PRIMARY KEY,
-		PersonType NVARCHAR(14) NOT NULL UNIQUE	
-	);
-END;
