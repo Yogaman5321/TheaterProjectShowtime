@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="630" d:DesignWidth="1080">
     <Grid>
-        <StackPanel Margin="200,100,300,100">
+        <StackPanel Margin="200,100,200,100">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <TextBlock FontSize="12" Margin="60,10,15,10">Enter theater number:</TextBlock>
-                <TextBox Width="40" FontSize="12" Margin="0,10,15,10">
+                <TextBox x:Name="TheaterInput" Width="40" FontSize="12" Margin="0,10,15,10">
                     <!-- placeholder
                         <TextBox.Text>
                             <Binding StringFormat="C" Path="Paid" Delay="500" UpdateSourceTrigger="PropertyChanged">

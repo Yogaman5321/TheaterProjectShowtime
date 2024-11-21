@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TheaterData.Models;
 
 namespace TheaterProj.Models
 {
@@ -21,12 +20,12 @@ namespace TheaterProj.Models
 
         public List<int> Screens { get; set; }
 
-        public List<ScreenType> ScreenTypes { get; set; }
+        public List<string> ScreenTypes { get; set; }
 
         public List<DateTime> ShowDates { get; set; }
 
         public FullTheater(string theaterName, string address, string city, string state, string theaterChainName, List<int> screens,
-                                List<ScreenType> screenTypes, List<DateTime> showDates)
+                                List<string> screenTypes, List<DateTime> showDates)
         {
             this.TheaterName = theaterName;
             this.Address = address;

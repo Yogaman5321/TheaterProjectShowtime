@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TheaterData.Models;
+using TheaterProj.Models;
 using TheaterProj.TheaterApp.EventArgs;
 
 namespace TheaterProj.TheaterApp
@@ -31,6 +32,12 @@ namespace TheaterProj.TheaterApp
 
         public void SubmitButtonClickEventHandler(object? sender, RoutedEventArgs e)
         {
+            if(DataContext is DataCollection dc)
+            {
+                
+            }
+
+
             // send info number to update DataContext of
             TheaterSubmitted?.Invoke(this, new TheaterEventArgs());
         }

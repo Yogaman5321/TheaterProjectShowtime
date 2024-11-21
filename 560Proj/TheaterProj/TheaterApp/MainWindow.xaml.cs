@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TheaterProj.TheaterApp.EventArgs;
+using TheaterData;
+using TheaterProj.Models;
 
 namespace TheaterProj.TheaterApp
 {
@@ -19,14 +21,14 @@ namespace TheaterProj.TheaterApp
     {
         public MainWindow()
         {
-            InitializeComponent();
-
+            InitializeComponent();            
             TheaterInputDisplay.TheaterSubmitted += TheaterInputEventHandler;
         }
 
         public void SchedulerButtonClickEventHandler(object? sender, RoutedEventArgs e)
         {
             SetDisplay(TheaterInputDisplay);
+            
         }
 
         public void HomeButtonClickEventHandler(object? sender, RoutedEventArgs e)
@@ -51,45 +53,48 @@ namespace TheaterProj.TheaterApp
         /// <param name="display">The UserControl to set visible</param>
         private void SetDisplay(UserControl display)
         {
-            if (display == TheaterInputDisplay)
+            if(DataContext is DataCollection dc)
             {
-                // show this one
-                TheaterInputDisplay.Visibility = Visibility.Visible;
+                if (display == TheaterInputDisplay)
+                {
+                    // show this one
+                    TheaterInputDisplay.Visibility = Visibility.Visible;
 
-                // hide all others
-                MainMenuDisplay.Visibility = Visibility.Hidden;
-                ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
-                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
-            }
-            else if (display == ShowtimeSchedulerDisplay)
-            {
-                // show this one
-                ShowtimeSchedulerDisplay.Visibility = Visibility.Visible;
+                    // hide all others
+                    MainMenuDisplay.Visibility = Visibility.Hidden;
+                    ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
+                    AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
+                }
+                else if (display == ShowtimeSchedulerDisplay)
+                {
+                    // show this one
+                    ShowtimeSchedulerDisplay.Visibility = Visibility.Visible;
 
-                // hide all others
-                MainMenuDisplay.Visibility = Visibility.Hidden;
-                TheaterInputDisplay.Visibility = Visibility.Hidden;
-                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
-            }
-            else if (display == AggregatingQueriesDisplay)
-            {
-                // show this one
-                AggregatingQueriesDisplay.Visibility = Visibility.Visible;
+                    // hide all others
+                    MainMenuDisplay.Visibility = Visibility.Hidden;
+                    TheaterInputDisplay.Visibility = Visibility.Hidden;
+                    AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
+                }
+                else if (display == AggregatingQueriesDisplay)
+                {
+                    // show this one
+                    AggregatingQueriesDisplay.Visibility = Visibility.Visible;
 
-                // hide all others
-                MainMenuDisplay.Visibility = Visibility.Hidden;
-                TheaterInputDisplay.Visibility = Visibility.Hidden;
-                ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                // show this one
-                MainMenuDisplay.Visibility = Visibility.Visible;
+                    // hide all others
+                    MainMenuDisplay.Visibility = Visibility.Hidden;
+                    TheaterInputDisplay.Visibility = Visibility.Hidden;
+                    ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    // show this one
+                    MainMenuDisplay.Visibility = Visibility.Visible;
 
-                // hide all others
-                TheaterInputDisplay.Visibility = Visibility.Hidden;
-                ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
-                AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
+                    // hide all others
+                    TheaterInputDisplay.Visibility = Visibility.Hidden;
+                    ShowtimeSchedulerDisplay.Visibility = Visibility.Hidden;
+                    AggregatingQueriesDisplay.Visibility = Visibility.Hidden;
+                }
             }
         }
 
