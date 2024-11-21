@@ -1,5 +1,5 @@
 ﻿
-$Server = "(localdb)\ProjectModels"
+$Server = "(localdb)\MSSQLLocalDb"
 $Database = "master"
 
 Get-Module -ListAvailable -Name SqlServer;

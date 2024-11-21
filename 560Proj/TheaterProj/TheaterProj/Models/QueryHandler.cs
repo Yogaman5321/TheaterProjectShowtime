@@ -15,7 +15,7 @@ namespace TheaterProj
     public static class QueryHandler
     {
 
-        private static readonly string connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=ProjDatabase;Integrated Security=True;Encrypt=False";    
+        private static readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDb;Initial Catalog=hunter421;Integrated Security=True;Encrypt=False";    
         /*
         public void AddDate(DateTime date)
         {
