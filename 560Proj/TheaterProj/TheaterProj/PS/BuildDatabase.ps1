@@ -47,6 +47,9 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\h
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Data\FillShowTimes.sql"
 
 Write-Host "Stored procedures..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\GetCrewMembersForMovie.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\RetrieveAllMovies.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\RetrieveFullTheater.sql"
 
 #Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Theaters.AddShowTime.sql"
 

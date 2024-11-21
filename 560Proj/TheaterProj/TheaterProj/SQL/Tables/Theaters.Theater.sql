@@ -1,5 +1,4 @@
-﻿
-IF OBJECT_ID(N'Theaters.Theater') IS NULL
+﻿IF OBJECT_ID(N'Theaters.Theater') IS NULL
 BEGIN
 CREATE TABLE [Theaters].[Theater]
 	(

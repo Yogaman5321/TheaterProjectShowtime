@@ -12,23 +12,23 @@ using System.Net;
 
 namespace TheaterProj
 {
-    public class QueryHandler
+    public static class QueryHandler
     {
 
-        private string connectionString = "data source=Hunter\\LOCALDB#A206708F;initial catalog=master;trusted_connection=true";
-
-        private DateTime _showDate;
-
-        private string _showMovie;
-
+        private static readonly string connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=ProjDatabase;Integrated Security=True;Encrypt=False";    
+        /*
         public void AddDate(DateTime date)
         {
             if (date == null) throw new ArgumentNullException("The date cannot be null");
             if (date <= DateTime.Now) throw new ArgumentException("The date cannot be the current time or in the past.");
             _showDate = date;
         }
+        */
 
-        public IEnumerable<Movie> GetAllMovies()
+        
+
+
+        public static IEnumerable<Movie> GetAllMovies()
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -44,7 +44,7 @@ namespace TheaterProj
         }
 
 
-        private IEnumerable<Movie> TranslateAllMovies(SqlDataReader reader)
+        private static IEnumerable<Movie> TranslateAllMovies(SqlDataReader reader)
         {
             List<Movie> results = new List<Movie>();
             List<MovieHolder> holder = new List<MovieHolder>();
@@ -106,7 +106,7 @@ namespace TheaterProj
 
         }
 
-        private List<CrewMember> GetCrewMembersForMovie(string movieName)
+        private static List<CrewMember> GetCrewMembersForMovie(string movieName)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -126,7 +126,7 @@ namespace TheaterProj
 
 
 
-        private List<CrewMember> TranslateCrewMembers(SqlDataReader reader)
+        private static List<CrewMember> TranslateCrewMembers(SqlDataReader reader)
         {
             List<CrewMember> crew = new List<CrewMember>();
 
@@ -148,7 +148,7 @@ namespace TheaterProj
 
 
 
-        public FullTheater GetFullTheater(int theaterNum)
+        public static FullTheater GetFullTheater(int theaterNum)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -165,7 +165,7 @@ namespace TheaterProj
             }
         }
 
-        private FullTheater TranslateFullTheater(SqlDataReader reader)
+        private static FullTheater TranslateFullTheater(SqlDataReader reader)
         {
             string name;
             string address;

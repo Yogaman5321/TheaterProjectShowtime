@@ -9,11 +9,10 @@ namespace TheaterProj.Models
     public class DataCollection
     {
 
-
         public FullTheater Theater { get; set; }
 
 
-        public IEnumerable<Movie> Movies {get; set;}
+        public IEnumerable<Movie> Movies => QueryHandler.GetAllMovies();
 
 
     }

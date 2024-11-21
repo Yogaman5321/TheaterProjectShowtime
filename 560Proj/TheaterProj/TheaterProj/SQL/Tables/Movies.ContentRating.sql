@@ -1,4 +1,5 @@
-﻿IF OBJECT_ID(N'Movies.ContentRating') IS NULL
+﻿
+IF OBJECT_ID(N'Movies.ContentRating') IS NULL
 BEGIN
 	CREATE TABLE Movies.ContentRating
 	(
