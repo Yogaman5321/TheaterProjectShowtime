@@ -27,30 +27,8 @@
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="18" FontWeight="Heavy" Margin="10">Showtimes</TextBlock>
-            <DockPanel Grid.Row="1" Margin="0,0,20,0">
-                <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <!--
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} showing at {1:MM/dd/yy H:mm}">
-                                            <Binding Path="MovieName"/>
-                                            <Binding Path="DateTime"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                                -->
-                                <DockPanel>
-                                    <Button DockPanel.Dock="Right" Background="OrangeRed" HorizontalAlignment="Right" Click="RemoveShowtimeClickEventHandler">Remove</Button>
-                                    <Button DockPanel.Dock="Left" Background="ForestGreen" HorizontalAlignment="Right" Click="EditShowtimeClickEventHandler">Edit</Button>
-                                </DockPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </DockPanel>
+            <ListView x:Name="ListViewView" Grid.Row="1" Margin="0,0,20,0">
+            </ListView>
         </Grid>
 
         <DockPanel Grid.Column="0" Grid.Row="0" Margin="20,10,20,0">
@@ -64,6 +42,7 @@
 
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,10,0,0">
                 <TextBlock Margin="10">Enter movie:</TextBlock>
+                <TextBox Margin="10" MinWidth="250"/>
             </StackPanel>
 
             <ListView DockPanel.Dock="Bottom" MouseDoubleClick="AddMovieClickEventHandler" ItemsSource="{Binding}">

@@ -22,6 +22,7 @@ namespace TheaterProj.Models
             this.ReleaseYear = releaseYear;
             this.Runtime = runtime;
             this.AverageUserScore = averageScore;
+
         }
 
 

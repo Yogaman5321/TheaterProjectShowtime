@@ -67,7 +67,7 @@
     <Compile Include="Models\DataCollection.cs" />
     <Compile Include="Models\FullTheater.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\MovieHolder.cs" />
+    <Compile Include="Models\SchedulerViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\QueryHandler.cs" />

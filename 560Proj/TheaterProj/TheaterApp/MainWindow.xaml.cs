@@ -24,7 +24,6 @@ namespace TheaterProj.TheaterApp
         {
             InitializeComponent();
             DataContext = new DataCollection();
-            IEnumerable<Movie> test = QueryHandler.GetAllMovies();
             TheaterInputDisplay.TheaterSubmitted += TheaterInputEventHandler;
         }
 
@@ -48,6 +47,12 @@ namespace TheaterProj.TheaterApp
         {
             // set ShowtimeSchedulerDisplay.DataContext to the input theater
             SetDisplay(ShowtimeSchedulerDisplay);
+            if(DataContext is DataCollection dc)
+            {
+                dc.Theater = e.Theater;
+                ShowtimeSchedulerDisplay.DataContext = dc;
+                ShowtimeSchedulerDisplay.FillShowTimeData(dc.Theater);
+            }
         }
 
         /// <summary>

@@ -24,8 +24,10 @@ namespace TheaterProj.Models
 
         public List<DateTime> ShowDates { get; set; }
 
+        public List<string> MovieName { get; set; }
+
         public FullTheater(string theaterName, string address, string city, string state, string theaterChainName, List<int> screens,
-                                List<string> screenTypes, List<DateTime> showDates)
+                                List<string> screenTypes, List<DateTime> showDates, List<string> movieName)
         {
             this.TheaterName = theaterName;
             this.Address = address;
@@ -35,6 +37,7 @@ namespace TheaterProj.Models
             this.Screens = screens;
             this.ScreenTypes = screenTypes;
             this.ShowDates = showDates;
+            this.MovieName = movieName;
         }
 
 

@@ -16,14 +16,7 @@ namespace TheaterProj
     {
 
         private static readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=ProjDatabase;Integrated Security=SSPI;";    
-        /*
-        public void AddDate(DateTime date)
-        {
-            if (date == null) throw new ArgumentNullException("The date cannot be null");
-            if (date <= DateTime.Now) throw new ArgumentException("The date cannot be the current time or in the past.");
-            _showDate = date;
-        }
-        */
+        
 
         public static IEnumerable<Movie> GetAllMovies()
         {
@@ -43,8 +36,6 @@ namespace TheaterProj
         private static IEnumerable<Movie> TranslateAllMovies(SqlDataReader reader)
         {
             List<Movie> results = new List<Movie>();
-            List<MovieHolder> holder = new List<MovieHolder>();
-
 
             string movieName = "";
             int releaseYear = 0;
@@ -57,37 +48,15 @@ namespace TheaterProj
             var runtimeOrdinal = reader.GetOrdinal("Runtime");
             var averageUserScoreOrdinal = reader.GetOrdinal("AverageUserScore");
 
-            while (reader.Read())
-            {
-                if (movieName == "") //The first iteration.
-                {
-                    movieName = reader.GetString(movieNameOrdinal);
-                    releaseYear = reader.GetInt32(releaseYearOrdinal);
-                    runtime = reader.GetInt32(runtimeOrdinal);
-                    averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
-                }
-                else if(movieName != reader.GetString(movieNameOrdinal)) //When the movie has changed to a different one, add to the MovieHolder and continue.
-                {
-                    holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
-                    movieName = reader.GetString(movieNameOrdinal);
-                    releaseYear = reader.GetInt32(releaseYearOrdinal);
-                    runtime = reader.GetInt32(runtimeOrdinal);
-                    averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
 
-                }
-                else //Gathering the different genres.
-                {
-                    //genres.Add(reader.GetString(genreOrdinal));
-                }                
-            }
-            holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
-            foreach (MovieHolder mh in holder)
-            {
-                results.Add(new Movie(
-                    mh.MovieName,
-                    mh.ReleaseYear,
-                    mh.Runtime,
-                    mh.AverageUserScore));
+            while (reader.Read())
+            {                
+                movieName = reader.GetString(movieNameOrdinal);
+                releaseYear = reader.GetInt32(releaseYearOrdinal);
+                runtime = reader.GetInt32(runtimeOrdinal);
+                averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
+                results.Add(new Movie(movieName, releaseYear, runtime, averageUserScore));
+              
             }
             return results;
 
@@ -97,11 +66,9 @@ namespace TheaterProj
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("GetCrewMembersForMovie", connection))
+                using (var command = new SqlCommand($"EXEC Movies.GetCrewMembersForMovie @MovieName = N'{movieName}'", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("MovieName", movieName);
+                    command.CommandType = CommandType.Text;
 
                     connection.Open();
 
@@ -132,11 +99,9 @@ namespace TheaterProj
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveFullTheater", connection))
+                using (var command = new SqlCommand($"EXEC Theaters.RetrieveAllInfoForTheater @TheaterNumber = N'{theaterNum}'", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("TheaterNumber", theaterNum);
+                    command.CommandType = CommandType.Text;
                     
                     connection.Open();
 
@@ -155,6 +120,7 @@ namespace TheaterProj
             List<int> screenNums = new List<int>();
             List<string> screenTypes = new List<string>();
             List<DateTime> showDates = new List<DateTime>();
+            List<string> movies = new List<string>();
 
 
             var nameOrdinal = reader.GetOrdinal("TheaterName");
@@ -165,8 +131,9 @@ namespace TheaterProj
             var screenNumOrdinal = reader.GetOrdinal("ScreenNumber");
             var screenTypeOrdinal = reader.GetOrdinal("ScreenType");
             var showDateOrdinal = reader.GetOrdinal("DateTime");
+            var movieNameOrdinal = reader.GetOrdinal("MovieName");
 
-            if (!reader.Read()) throw new ArgumentException();
+            reader.Read();
             name = reader.GetString(nameOrdinal);
             address = reader.GetString(addressOrdinal);
             city = reader.GetString(cityOrdinal);
@@ -177,9 +144,10 @@ namespace TheaterProj
                 screenNums.Add(reader.GetInt32(screenNumOrdinal));
                 screenTypes.Add(reader.GetString(screenTypeOrdinal));
                 showDates.Add(reader.GetDateTime(showDateOrdinal));
+                movies.Add(reader.GetString(movieNameOrdinal));
             } while (reader.Read());
 
-            return new FullTheater(name, address, city, state, chainName, screenNums, screenTypes, showDates);
+            return new FullTheater(name, address, city, state, chainName, screenNums, screenTypes, showDates, movies);
         }
 
     }
