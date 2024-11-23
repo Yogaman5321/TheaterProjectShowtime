@@ -79,9 +79,11 @@ namespace TheaterProj.TheaterApp
                 {
                     for(int i = 0; i < ft.ShowDates.Count; i++)
                     {
+                        
+                        
                         TextBlock text = new();
                         text.Text = $"Movie: {ft.MovieName[i]}\n{ft.ShowDates[i].ToString()}\nOn Screen {ft.Screens[i]}\n";
-                        ListViewView.Items.Add(text);
+                        ListViewView.Items.Add(text);                      
                     }
                 }
             }
