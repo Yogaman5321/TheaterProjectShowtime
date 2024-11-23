@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE RetrieveAllMovies AS
+﻿CREATE OR ALTER PROCEDURE Movies.RetrieveAllMovies AS
 
 SELECT M.MovieName, M.ReleaseYear, M.Runtime, M.AverageUserScore, GT.GenreType
 FROM Movies.Movie M

@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE GetCrewMembersForMovie
+﻿CREATE OR ALTER PROCEDURE Movies.GetCrewMembersForMovie
 	@MovieName NVARCHAR(50)
 AS
 SELECT CM.PersonType, CM.FirstName, CM.LastName

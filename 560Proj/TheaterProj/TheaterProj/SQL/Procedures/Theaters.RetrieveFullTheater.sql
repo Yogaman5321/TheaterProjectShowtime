@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE RetrieveAllInfoForTheater 
+﻿CREATE OR ALTER PROCEDURE Theaters.RetrieveAllInfoForTheater 
 	@TheaterNumber INT
 AS
 SELECT T.TheaterName, L.[Address], L.City, L.[State], TC.TheaterChainName, S.ScreenNumber, SCT.ScreenType, ST.[DateTime]

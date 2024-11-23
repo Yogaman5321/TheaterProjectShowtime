@@ -15,7 +15,7 @@ namespace TheaterProj
     public static class QueryHandler
     {
 
-        private static readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDb;Initial Catalog=hunter421;Integrated Security=True;Encrypt=False";    
+        private static readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=ProjDatabase;Integrated Security=SSPI;";    
         /*
         public void AddDate(DateTime date)
         {
@@ -25,16 +25,13 @@ namespace TheaterProj
         }
         */
 
-        
-
-
         public static IEnumerable<Movie> GetAllMovies()
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveAllMovies", connection))
+                using (var command = new SqlCommand("EXEC Movies.RetrieveAllMovies", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.Text;
 
                     connection.Open();
 
@@ -42,7 +39,6 @@ namespace TheaterProj
                 }
             }
         }
-
 
         private static IEnumerable<Movie> TranslateAllMovies(SqlDataReader reader)
         {
@@ -54,15 +50,12 @@ namespace TheaterProj
             int releaseYear = 0;
             int runtime = 0;
             decimal averageUserScore = 0;
-            List<string> genres = new List<string>();
-            List<CrewMember> crewMembersList = new List<CrewMember>();
 
 
             var movieNameOrdinal = reader.GetOrdinal("MovieName");
             var releaseYearOrdinal = reader.GetOrdinal("ReleaseYear");
             var runtimeOrdinal = reader.GetOrdinal("Runtime");
             var averageUserScoreOrdinal = reader.GetOrdinal("AverageUserScore");
-            var genreOrdinal = reader.GetOrdinal("GenreType");
 
             while (reader.Read())
             {
@@ -72,35 +65,29 @@ namespace TheaterProj
                     releaseYear = reader.GetInt32(releaseYearOrdinal);
                     runtime = reader.GetInt32(runtimeOrdinal);
                     averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
-                    genres.Add(reader.GetString(genreOrdinal));
                 }
                 else if(movieName != reader.GetString(movieNameOrdinal)) //When the movie has changed to a different one, add to the MovieHolder and continue.
                 {
-                    holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore, genres));
+                    holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
                     movieName = reader.GetString(movieNameOrdinal);
                     releaseYear = reader.GetInt32(releaseYearOrdinal);
                     runtime = reader.GetInt32(runtimeOrdinal);
                     averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
-                    genres.Add(reader.GetString(genreOrdinal));
 
                 }
                 else //Gathering the different genres.
                 {
-                    genres.Add(reader.GetString(genreOrdinal));
+                    //genres.Add(reader.GetString(genreOrdinal));
                 }                
             }
-            holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore, genres));
+            holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
             foreach (MovieHolder mh in holder)
             {
-                crewMembersList = GetCrewMembersForMovie(mh.MovieName);
                 results.Add(new Movie(
                     mh.MovieName,
                     mh.ReleaseYear,
                     mh.Runtime,
-                    mh.AverageUserScore,
-                    mh.Genres,
-                    crewMembersList));
-                crewMembersList.Clear();
+                    mh.AverageUserScore));
             }
             return results;
 
@@ -123,9 +110,6 @@ namespace TheaterProj
             }
         }
 
-
-
-
         private static List<CrewMember> TranslateCrewMembers(SqlDataReader reader)
         {
             List<CrewMember> crew = new List<CrewMember>();
@@ -143,10 +127,6 @@ namespace TheaterProj
             }
             return crew;
         }
-
-
-
-
 
         public static FullTheater GetFullTheater(int theaterNum)
         {

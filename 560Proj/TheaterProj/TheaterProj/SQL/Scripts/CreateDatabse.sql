@@ -1,5 +1,3 @@
-
-
 IF EXISTS
    (
       SELECT *
