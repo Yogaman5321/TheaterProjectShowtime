@@ -51,6 +51,7 @@ namespace TheaterProj.TheaterApp
             {
                 dc.Theater = e.Theater;
                 ShowtimeSchedulerDisplay.DataContext = dc;
+                ShowtimeSchedulerDisplay.FillShowTimeData(dc.Theater);
             }
         }
 

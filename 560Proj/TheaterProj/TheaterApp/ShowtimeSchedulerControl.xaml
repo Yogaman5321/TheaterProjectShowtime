@@ -28,28 +28,7 @@
             </Grid.RowDefinitions>
             <TextBlock FontSize="18" FontWeight="Heavy" Margin="10">Showtimes</TextBlock>
             <DockPanel Grid.Row="1" Margin="0,0,20,0">
-                <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <!--
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} showing at {1:MM/dd/yy H:mm}">
-                                            <Binding Path="MovieName"/>
-                                            <Binding Path="DateTime"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                                -->
-                                <DockPanel>
-                                    <Button DockPanel.Dock="Right" Background="OrangeRed" HorizontalAlignment="Right" Click="RemoveShowtimeClickEventHandler">Remove</Button>
-                                    <Button DockPanel.Dock="Left" Background="ForestGreen" HorizontalAlignment="Right" Click="EditShowtimeClickEventHandler">Edit</Button>
-                                </DockPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <StackPanel x:Name="StackList"/>
             </DockPanel>
         </Grid>
 

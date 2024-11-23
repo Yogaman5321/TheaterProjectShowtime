@@ -16,18 +16,13 @@ namespace TheaterProj.Models
 
         public decimal AverageUserScore { get; set; }
 
-        public IEnumerable<string> Genres { get; set; }
-
-        public IEnumerable<CrewMember> CrewMembers { get; set; }
-
-        public Movie(string movieName, int releaseYear, int runtime, decimal averageScore, IEnumerable<string> genres, IEnumerable<CrewMember> crewMembers)
+        public Movie(string movieName, int releaseYear, int runtime, decimal averageScore)
         {
             this.MovieName = movieName;
             this.ReleaseYear = releaseYear;
             this.Runtime = runtime;
             this.AverageUserScore = averageScore;
-            this.Genres = genres;
-            this.CrewMembers = crewMembers;
+
         }
 
 

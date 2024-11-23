@@ -31,11 +31,18 @@ namespace TheaterProj.TheaterApp
         }
 
         public void SubmitButtonClickEventHandler(object? sender, RoutedEventArgs e)
-        {
-            int userVal = int.Parse(TheaterInput.Text);
+        {           
 
-            // send info number to update DataContext of
-            TheaterSubmitted?.Invoke(this, new TheaterEventArgs(QueryHandler.GetFullTheater(i)));
+            try
+            {
+                int i = int.Parse(TheaterInput.Text);
+                TheaterSubmitted?.Invoke(this, new TheaterEventArgs(QueryHandler.GetFullTheater(i)));
+            }
+            catch
+            {
+                MessageBox.Show("Input must be an int");
+            }
+            
             
         }
     }

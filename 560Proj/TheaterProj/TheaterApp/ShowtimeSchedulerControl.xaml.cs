@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TheaterData.Models;
+using TheaterProj.Models;
 using TheaterProj.TheaterApp.EventArgs;
 
 namespace TheaterProj.TheaterApp
@@ -67,6 +68,23 @@ namespace TheaterProj.TheaterApp
         public void AddShowtimeClickEventHandler(object? sender, RoutedEventArgs e)
         {
             // maybe make AddShowtimeViewModel as DataContext of the AddShowtimeButton that collects the info from the other buttons
+        }
+
+        public void FillShowTimeData(FullTheater theater)
+        {
+            StackList.Children.Clear();
+            if(DataContext is DataCollection dc)
+            {
+                if(dc.Theater is FullTheater ft)
+                {
+                    for(int i = 0; i < ft.ShowDates.Count; i++)
+                    {
+                        TextBlock text = new();
+                        text.Text = $"{ft.MovieName[i]}     {ft.ShowDates[i].ToString()}";
+                        StackList.Children.Add(text);
+                    }
+                }
+            }
         }
     }
 }
