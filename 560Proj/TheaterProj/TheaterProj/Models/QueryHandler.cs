@@ -50,12 +50,16 @@ namespace TheaterProj
             int releaseYear = 0;
             int runtime = 0;
             decimal averageUserScore = 0;
+            List<string> genres = new List<string>();
+            List<CrewMember> crew = new List<CrewMember>();
 
 
             var movieNameOrdinal = reader.GetOrdinal("MovieName");
             var releaseYearOrdinal = reader.GetOrdinal("ReleaseYear");
             var runtimeOrdinal = reader.GetOrdinal("Runtime");
             var averageUserScoreOrdinal = reader.GetOrdinal("AverageUserScore");
+
+            var genreOrdinal = reader.GetOrdinal("GenreType");
 
             while (reader.Read())
             {
@@ -66,28 +70,34 @@ namespace TheaterProj
                     runtime = reader.GetInt32(runtimeOrdinal);
                     averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
                 }
-                else if(movieName != reader.GetString(movieNameOrdinal)) //When the movie has changed to a different one, add to the MovieHolder and continue.
+                else if(movieName.Equals(reader.GetString(movieNameOrdinal)) == false) //When the movie has changed to a different one, add to the MovieHolder and continue.
                 {
-                    holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
+                    holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore, genres));
                     movieName = reader.GetString(movieNameOrdinal);
                     releaseYear = reader.GetInt32(releaseYearOrdinal);
                     runtime = reader.GetInt32(runtimeOrdinal);
                     averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
+                    genres.Add(reader.GetString(genreOrdinal));
 
                 }
                 else //Gathering the different genres.
                 {
-                    //genres.Add(reader.GetString(genreOrdinal));
+                    
+
+                    genres.Add(reader.GetString(genreOrdinal));
                 }                
             }
-            holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore));
+            //holder.Add(new MovieHolder(movieName, releaseYear, runtime, averageUserScore, genres));
             foreach (MovieHolder mh in holder)
             {
+                crew = GetCrewMembersForMovie(mh.MovieName);
                 results.Add(new Movie(
                     mh.MovieName,
                     mh.ReleaseYear,
                     mh.Runtime,
-                    mh.AverageUserScore));
+                    mh.AverageUserScore,
+                    mh.Genres,
+                    crew));
             }
             return results;
 
@@ -97,11 +107,9 @@ namespace TheaterProj
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("GetCrewMembersForMovie", connection))
+                using (var command = new SqlCommand($"EXEC Movies.GetCrewMembersForMovie @MovieName = N'{movieName}'", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("MovieName", movieName);
+                    command.CommandType = CommandType.Text;
 
                     connection.Open();
 
@@ -132,11 +140,9 @@ namespace TheaterProj
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveFullTheater", connection))
+                using (var command = new SqlCommand($"EXEC Theaters.RetrieveAllInfoForTheater @TheaterNumber = N'{theaterNum}'", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("TheaterNumber", theaterNum);
+                    command.CommandType = CommandType.Text;
                     
                     connection.Open();
 

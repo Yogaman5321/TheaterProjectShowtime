@@ -32,14 +32,11 @@ namespace TheaterProj.TheaterApp
 
         public void SubmitButtonClickEventHandler(object? sender, RoutedEventArgs e)
         {
-            if(DataContext is DataCollection dc)
-            {
-                
-            }
-
+            int userVal = int.Parse(TheaterInput.Text);
 
             // send info number to update DataContext of
-            TheaterSubmitted?.Invoke(this, new TheaterEventArgs());
+            TheaterSubmitted?.Invoke(this, new TheaterEventArgs(QueryHandler.GetFullTheater(i)));
+            
         }
     }
 }
