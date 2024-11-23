@@ -133,6 +133,7 @@ namespace TheaterProj
             var showDateOrdinal = reader.GetOrdinal("DateTime");
             var movieNameOrdinal = reader.GetOrdinal("MovieName");
 
+            reader.Read();
             name = reader.GetString(nameOrdinal);
             address = reader.GetString(addressOrdinal);
             city = reader.GetString(cityOrdinal);
