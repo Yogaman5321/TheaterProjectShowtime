@@ -27,12 +27,7 @@
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="18" FontWeight="Heavy" Margin="10">Showtimes</TextBlock>
-            <ListView Grid.Row="1" Margin="0,0,20,0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock x:Name="ShowText"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+            <ListView x:Name="ListViewView" Grid.Row="1" Margin="0,0,20,0">
             </ListView>
         </Grid>
 

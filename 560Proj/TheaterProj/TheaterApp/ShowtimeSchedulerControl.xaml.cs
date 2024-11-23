@@ -72,7 +72,7 @@ namespace TheaterProj.TheaterApp
 
         public void FillShowTimeData(FullTheater theater)
         {
-            //
+            ListViewView.Items.Clear();
             if(DataContext is DataCollection dc)
             {
                 if(dc.Theater is FullTheater ft)
@@ -81,7 +81,7 @@ namespace TheaterProj.TheaterApp
                     {
                         TextBlock text = new();
                         text.Text = $"Movie: {ft.MovieName[i]}\n{ft.ShowDates[i].ToString()}\nOn Screen {ft.Screens[i]}\n";
-                        StackList.Children.Add(text);
+                        ListViewView.Items.Add(text);
                     }
                 }
             }
