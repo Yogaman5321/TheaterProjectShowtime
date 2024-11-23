@@ -32,15 +32,15 @@ namespace TheaterProj.TheaterApp
 
         public void SubmitButtonClickEventHandler(object? sender, RoutedEventArgs e)
         {
-            int i = int.Parse(TheaterInput.Text);
-            TheaterSubmitted?.Invoke(this, new TheaterEventArgs(QueryHandler.GetFullTheater(i)));
+            
             try
             {
-                
+                int i = int.Parse(TheaterInput.Text);
+                TheaterSubmitted?.Invoke(this, new TheaterEventArgs(QueryHandler.GetFullTheater(i)));
             }
             catch
             {
-                MessageBox.Show("Input must be an int");
+                MessageBox.Show("Input must be a valid theater number.");
             }
             
             
