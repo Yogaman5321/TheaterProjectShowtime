@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using TheaterProj.Models;
 using System.Net;
+using System.Collections.ObjectModel;
 
 namespace TheaterProj
 {
@@ -18,7 +19,7 @@ namespace TheaterProj
         private static readonly string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=ProjDatabase;Integrated Security=SSPI;";    
         
 
-        public static IEnumerable<Movie> GetAllMovies()
+        public static ObservableCollection<Movie> GetAllMovies()
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -33,9 +34,9 @@ namespace TheaterProj
             }
         }
 
-        private static IEnumerable<Movie> TranslateAllMovies(SqlDataReader reader)
+        private static ObservableCollection<Movie> TranslateAllMovies(SqlDataReader reader)
         {
-            List<Movie> results = new List<Movie>();
+            ObservableCollection<Movie> results = new ObservableCollection<Movie>();
 
             string movieName = "";
             int releaseYear = 0;
@@ -51,11 +52,14 @@ namespace TheaterProj
 
             while (reader.Read())
             {                
-                movieName = reader.GetString(movieNameOrdinal);
-                releaseYear = reader.GetInt32(releaseYearOrdinal);
-                runtime = reader.GetInt32(runtimeOrdinal);
-                averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
-                results.Add(new Movie(movieName, releaseYear, runtime, averageUserScore));
+                if(movieName != reader.GetString(movieNameOrdinal))
+                {
+                    movieName = reader.GetString(movieNameOrdinal);
+                    releaseYear = reader.GetInt32(releaseYearOrdinal);
+                    runtime = reader.GetInt32(runtimeOrdinal);
+                    averageUserScore = Math.Round(reader.GetDecimal(averageUserScoreOrdinal), 1);
+                    results.Add(new Movie(movieName, releaseYear, runtime, averageUserScore));
+                }              
               
             }
             return results;
@@ -148,6 +152,21 @@ namespace TheaterProj
             } while (reader.Read());
 
             return new FullTheater(name, address, city, state, chainName, screenNums, screenTypes, showDates, movies);
+        }
+
+        public static void RemoveShowTime(int screenId, string date)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand($"EXEC Theaters.RemoveShowTime @ScreenID = {screenId} @[DateTime] = {date}", connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    connection.Open();
+
+                    return;
+                }
+            }
         }
 
     }

@@ -56,9 +56,8 @@ Write-Host "Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Movies.GetCrewMembersForMovie.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Movies.RetrieveAllMovies.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Theaters.RetrieveFullTheater.sql"
-
-#Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Theaters.AddShowTime.sql"
-
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Theaters.AddShowTime.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "C:\Users\hunte\source\repos\TheaterProjectShowtime\560Proj\TheaterProj\TheaterProj\SQL\Procedures\Theaters.RemoveShowTime.sql"
 Write-Host "Rebuild completed."
 Write-Host ""
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +27,12 @@ namespace TheaterProj.TheaterApp
     {
         public event EventHandler<RemoveShowtimeEventArgs>? RemoveShowtime;
 
+        public SchedulerViewModel ViewModel { get; set; }
+
         public ShowtimeSchedulerControl()
         {
             InitializeComponent();
+            ViewModel = new();
         }
         
         /// <summary>
@@ -79,14 +84,44 @@ namespace TheaterProj.TheaterApp
                 {
                     for(int i = 0; i < ft.ShowDates.Count; i++)
                     {
-                        
-                        
-                        TextBlock text = new();
-                        text.Text = $"Movie: {ft.MovieName[i]}\n{ft.ShowDates[i].ToString()}\nOn Screen {ft.Screens[i]}\n";
-                        ListViewView.Items.Add(text);                      
+                        if (ft.ShowDates[i] > DateTime.Now)
+                        {
+                            TextBlock text = new();
+                            text.Text = $"Movie: {ft.MovieName[i]}\n{ft.ShowDates[i].ToString()}\nOn Screen {ft.Screens[i]}\n";
+                            ListViewView.Items.Add(text);
+                        }                       
+                                         
                     }
                 }
             }
+        }
+
+        public void FillMovies(string movieName)
+        {
+
+        }
+
+        public void FilterClick(object sender, RoutedEventArgs e)
+        {
+            GridViewView.Columns.Clear();
+            if(DataContext is DataCollection dc)
+            {
+                if(dc.Movies is ObservableCollection<Movie> movies)
+                {
+                    ObservableCollection<Movie> newMovies = new();
+                    foreach (Movie m in movies)
+                    {                        
+                        if (m.MovieName.Contains(TextFilter.Text, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            newMovies.Add(new Movie(m.MovieName, m.ReleaseYear, m.Runtime, m.AverageUserScore));
+                        }
+                        
+                    }
+                    dc.Movies = newMovies;                    
+                }
+                
+            }
+            
         }
     }
 }

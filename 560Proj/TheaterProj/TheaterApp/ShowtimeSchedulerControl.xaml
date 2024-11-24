@@ -42,34 +42,34 @@
 
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,10,0,0">
                 <TextBlock Margin="10">Enter movie:</TextBlock>
-                <TextBox Margin="10" MinWidth="250"/>
+                <TextBox x:Name="TextFilter" Margin="10" MinWidth="250"/>
+                <Button x:Name="Filter" MinWidth="40" Margin="10" Click="FilterClick">Filter</Button>
             </StackPanel>
 
-            <ListView DockPanel.Dock="Bottom" MouseDoubleClick="AddMovieClickEventHandler" ItemsSource="{Binding}">
+            <ListView x:Name="TheView" DockPanel.Dock="Bottom" MouseDoubleClick="AddMovieClickEventHandler" ItemsSource="{Binding Path=Movies}">
                 <ListView.View>
+                    <GridView x:Name="GridViewView" AllowsColumnReorder="true" ColumnHeaderToolTip="Movies">
 
-                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Movies">
+                        <GridViewColumn x:Name="Title" Header="Title" Width="400" DisplayMemberBinding="{Binding Path=MovieName}"/>
 
-                        <!-- add the property DisplayMemberBinding="{Binding Path=MovieName}" to bind -->
-                        <GridViewColumn   Header="Title" Width="400"/>
+                        <GridViewColumn x:Name="ReleaseYear" Header="Release Year" Width="90" DisplayMemberBinding="{Binding Path=ReleaseYear}"/>
 
-                        <!-- ex. DisplayMemberBinding="{Binding Path=ReleaseYear}" -->
-                        <GridViewColumn Header="Release Year" Width="90"/>
+                        <GridViewColumn x:Name="Runtime" Header="Runtime" Width="90" DisplayMemberBinding="{Binding Path=Runtime}"/>
 
-                        <!-- ex. DisplayMemberBinding="{Binding Path=Runtime}" -->
-                        <GridViewColumn Header="Runtime" Width="90"/>
-
-                        <!-- ex. DisplayMemberBinding="{Binding Path=AverageUserScore}" -->
-                        <GridViewColumn Header="IMDB Rating" Width="80"/>
+                        <GridViewColumn x:Name="UserScore" Header="IMDB Rating" Width="80" DisplayMemberBinding="{Binding Path=AverageUserScore}"/>
 
                     </GridView>
                 </ListView.View>
             </ListView>
         </DockPanel>
 
-        <StackPanel Margin="20" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <TextBlock Margin="10" VerticalAlignment="Center" FontSize="14">Date:</TextBlock>
-            <TextBlock Margin="10" VerticalAlignment="Center" FontSize="14">Movie:</TextBlock>
+        <StackPanel Margin="20,0,20,0" Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+            <TextBlock Margin="0,5,0,0" VerticalAlignment="Center" FontSize="14">Movie:</TextBlock>
+            <TextBlock Margin="0,5,0,0" VerticalAlignment="Center" FontSize="14">Date:</TextBlock>
+            <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                <TextBlock Margin="0,10,10,10" VerticalAlignment="Center" FontSize="14">Screen:</TextBlock>
+                <ComboBox Margin="0,10,0,10" Width="50" VerticalAlignment="Center" FontSize="14"/>
+            </StackPanel>
             <Button x:Name="AddShowtimeButton" Click="AddShowtimeClickEventHandler" Margin="10" Padding="10,0,10,0" VerticalAlignment="Center">Add Showtime</Button>
         </StackPanel>
     </Grid>

@@ -92,6 +92,7 @@
     <Content Include="SQL\Data\FillTheaterChain.sql" />
     <Content Include="SQL\Procedures\Movies.GetCrewMembersForMovie.sql" />
     <Content Include="SQL\Procedures\Movies.RetrieveAllMovies.sql" />
+    <Content Include="SQL\Procedures\Theaters.RemoveShowTime.sql" />
     <Content Include="SQL\Procedures\Theaters.RetrieveFullTheater.sql" />
     <Content Include="SQL\Scripts\GetConnectionString.sql" />
     <Content Include="SQL\Scripts\DropTables.sql" />
