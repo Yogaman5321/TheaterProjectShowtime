@@ -34,6 +34,8 @@ namespace TheaterProj.TheaterApp
             InitializeComponent();
             ViewModel = new();
         }
+
+
         
         /// <summary>
         /// Removes a Showtime from the database
@@ -96,14 +98,12 @@ namespace TheaterProj.TheaterApp
             }
         }
 
-        public void FillMovies(string movieName)
-        {
 
-        }
 
         public void FilterClick(object sender, RoutedEventArgs e)
         {
             GridViewView.Columns.Clear();
+            
             if(DataContext is DataCollection dc)
             {
                 if(dc.Movies is ObservableCollection<Movie> movies)
@@ -113,12 +113,15 @@ namespace TheaterProj.TheaterApp
                     {                        
                         if (m.MovieName.Contains(TextFilter.Text, StringComparison.CurrentCultureIgnoreCase))
                         {
-                            newMovies.Add(new Movie(m.MovieName, m.ReleaseYear, m.Runtime, m.AverageUserScore));
+                            newMovies.Add(m);
                         }
                         
                     }
-                    dc.Movies = newMovies;                    
+                    dc.Movies = newMovies;
+                    TheView.ItemsSource = dc.Movies;
+                    
                 }
+                
                 
             }
             

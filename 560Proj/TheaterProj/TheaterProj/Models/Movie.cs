@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace TheaterProj.Models
 {
     public class Movie
     {
+
         public string MovieName { get; set; }
 
         public int ReleaseYear { get; set; }
@@ -24,7 +26,6 @@ namespace TheaterProj.Models
             this.AverageUserScore = averageScore;
 
         }
-
 
     }
 }

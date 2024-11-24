@@ -105,5 +105,13 @@ namespace TheaterProj.TheaterApp
 
         }
 
+        public void GridViewChanged(object? sender, MoviesChanged e)
+        {
+            if(DataContext is DataCollection dc)
+            {
+                dc.Movies = e.Movies;
+            }
+        }
+
     }
 }
